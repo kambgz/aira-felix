@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url(4.jpg);
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(101, 67, 33, 0.9); /* Warna cokelat tua elegan */
+            padding: 20px; /* Mengurangi padding untuk tampilan lebih baik di smartphone */
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            display: none; /* Sembunyikan kontainer hingga pop-up ditutup */
+        }
+        h1 {
+            color: #fff;
+            font-size: 28px; /* Ukuran font lebih kecil untuk tampilan mobile */
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #f5deb3; /* Warna terang untuk kontras */
+            font-size: 20px; /* Ukuran font lebih kecil untuk tampilan mobile */
+            margin-bottom: 20px;
+            font-family: 'Arial', sans-serif; /* Mengembalikan font untuk nama mempelai */
+        }
+        .couple-photos {
+            display: flex;
+            justify-content: center; /* Rata tengah untuk tampilan mobile */
+            margin: 20px 0;
+            flex-wrap: wrap; /* Membuat gambar responsif */
+        }
+        .couple-photos img {
+            width: 120px; /* Ukuran gambar lebih kecil untuk tampilan mobile */
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid #f5deb3; /* Warna terang untuk border */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 5px; /* Jarak antar gambar */
+        }
+        .countdown {
+            font-size: 18px; /* Ukuran font lebih kecil untuk tampilan mobile */
+            margin: 20px 0;
+            color: #f5deb3; /* Warna terang untuk kontras */
+        }
+        .map {
+            width: 100%;
+            height: 200px; /* Mengurangi tinggi peta untuk tampilan mobile */
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .form {
+            margin: 20px 0;
+        }
+        .form input {
+            padding: 10px;
+            width: 90%; /* Lebar input lebih besar untuk tampilan mobile */
+            margin: 10px 0;
+            border: 1px solid #f5deb3; /* Warna terang untuk border */
+            border-radius: 5px;
+            background-color: #f8f1f1; /* Warna latar belakang kotak input */
+            color: #333; /* Warna teks dalam input */
+            transition: border-color 0.3s;
+        }
+        .form input:focus {
+            border-color: #f5deb3; /* Warna terang saat fokus */
+            outline: none;
+            background-color: #fff; /* Warna latar belakang saat fokus */
+        }
+        .form button {
+            padding: 10px 20px;
+            background-color: #6a1b9a; /* Warna ungu untuk tombol */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 90%; /* Lebar tombol lebih besar untuk tampilan mobile */
+        }
+        .form button:hover {
+            background-color: #4a148c; /* Warna ungu gelap saat hover */
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #f5deb3; /* Warna terang untuk footer */
+        }
+        .quote {
+            font-style: italic;
+            color: #f5deb3; /* Warna terang untuk kutipan */
+            margin: 20px 0;
+        }
+        /* Pop-up Styles */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Latar belakang hitam */
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Pastikan pop-up di atas konten lainnya */
+        }
+        .popup h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 20px; /* Ukuran font lebih kecil untuk tampilan mobile */
+        }
+        .popup button {
+            padding: 10px 20px;
+            background-color: #6a1b9a; /* Warna ungu untuk tombol */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .popup button:hover {
+            background-color: #4a148c; /* Warna ungu gelap saat hover */
+        }
+    </style>
+</head>
+<body>
+
+<div class="popup" id="popup">
+    <h2>Cinta adalah perjalanan yang indah, dan kami ingin Anda menjadi bagian dari perjalanan kami.</h2>
+    <h2>Kami mengundang Anda untuk merayakan hari bahagia kami, saat kami mengucapkan janji sehidup semati.</h2>
+    <button onclick="openInvitation()">Buka Undangan</button>
+</div>
+
+<div class="container" id="invitation">
+    <h1>Undangan Pernikahan</h1>
+    <h2>Bismillahirrahmanirrahim</h2>
+    <h2>Assalamu'alaikum Warahmatullahi Wabarakatuh,</h2>
+    <h2>Dengan penuh rasa syukur kepada Allah SWT, kami mengundang Anda untuk bersama-sama merayakan ikatan cinta yang telah Allah anugerahkan kepada kami.</h2>
+    <h2>Felix & Aira</h2> <!-- Nama mempelai ditambahkan di sini -->
+    
+    <h2>Tanggal: 25 Mei 2050</h2> <!-- Tanggal acara -->
+    <h2>Waktu: Mulai Pukul 08:00 WITA sampai kiamat</h2> <!-- Jam acara -->
+    <h2>Alamat: Istana Çırağan, Turki</h2> <!-- Alamat acara -->
+    
+    <div class="couple-photos">
+        <img src="1.jpg" alt="Mempelai Pria">
+        <img src="2.png" alt="Mempelai Wanita">
+    </div>
+
+    <p class="quote">“Cinta adalah perjalanan, bukan tujuan. Mari kita jalani perjalanan ini bersama.”</p>
+    <p class="quote">“Setiap detik bersamamu adalah keajaiban. Mari kita ciptakan lebih banyak keajaiban bersama.”</p>
+
+    <div class="countdown" id="countdown"></div>
+
+    <div class="map" id="map"></div>
+
+    <div class="form">
+        <input type="text" id="name" placeholder="Masukkan Nama Anda">
+        <button onclick="sendWhatsApp()">Kirim Ucapan</button>
+    </div>
+
+    <div class="footer">
+        <p>Dengan cinta,</p>
+        <p>Felix & Aira</p> <!-- Nama mempelai ditambahkan di sini -->
+    </div>
+</div>
+
+<audio id="background-music" src="5.mp3" loop autoplay></audio>
+
+<script>
+    // Fitur Hitung Mundur
+    const countdownDate = new Date("2050-05-25T00:00:00").getTime();
+    const countdownElement = document.getElementById("countdown");
+
+    const countdownFunction = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        countdownElement.innerHTML = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
+
+        if (distance < 0) {
+            clearInterval(countdownFunction);
+            countdownElement.innerHTML = "Acara Telah Dimulai!";
+        }
+    }, 1000);
+
+    // Fitur Mini Map
+    function initMap() {
+        const location = { lat: 41.0369, lng: 28.9885 }; // Koordinat Istana Çırağan
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 15,
+            center: location,
+        });
+        new google.maps.Marker({
+            position: location,
+            map: map,
+        });
+    }
+
+    // Fitur Kirim Ucapan
+    function sendWhatsApp() {
+        const name = document.getElementById("name").value;
+        const messages = [
+            `Selamat ${name}! Semoga bahagia selalu.`,
+            `Halo ${name}, selamat atas pernikahannya!`,
+            `Selamat ${name}! Semoga cinta kalian abadi.`,
+            `Hai ${name}, semoga hari bahagia ini menjadi awal yang indah!`
+        ];
+        const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+        const url = `https://wa.me/?text=${encodeURIComponent(randomMessage)}`;
+        window.open(url, '_blank');
+    }
+
+    // Fungsi untuk membuka undangan
+    function openInvitation() {
+        document.getElementById("popup").style.display = "none"; // Sembunyikan pop-up
+        document.getElementById("invitation").style.display = "block"; // Tampilkan undangan
+        document.getElementById("background-music").play(); // Putar musik
+    }
+
+    // Inisialisasi peta saat halaman dimuat
+    window.onload = function() {
+        initMap();
+    };
+</script>
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+</script>
+
+</body>
+</html>
