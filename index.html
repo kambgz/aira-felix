@@ -56,7 +56,7 @@
         }
         .map {
             width: 100%;
-            height: 200px; /* Mengurangi tinggi peta untuk tampilan mobile */
+            height: 300px; /* Tinggi peta mini */
             margin: 20px 0;
             border-radius: 10px;
             overflow: hidden;
@@ -153,7 +153,7 @@
     
     <h2>Tanggal: 25 Mei 2050</h2> <!-- Tanggal acara -->
     <h2>Waktu: Mulai Pukul 08:00 WITA sampai kiamat</h2> <!-- Jam acara -->
-    <h2>Alamat: Istana Çırağan, Turki</h2> <!-- Alamat acara -->
+    <h2>Alamat: <a class="map-link" href="https://www.google.com/maps/place/Istana+Çırağan/@41.020594,28.8528142,12z/data=!4m9!3m8!1s0x14cab7bbfbbe30a7:0xd22048cbfd39a85d!5m2!4m1!1i2!8m2!3d41.0439752!4d29.0161433!16zL20vMDgwMWdm?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D" target="_blank">Istana Çırağan, Turki</a></h2> <!-- Alamat acara -->
     
     <div class="couple-photos">
         <img src="1.jpg" alt="Mempelai Pria">
@@ -165,7 +165,9 @@
 
     <div class="countdown" id="countdown"></div>
 
-    <div class="map" id="map"></div>
+    <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d96326.81852222304!2d28.8528142!3d41.020594!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab7bbfbbe30a7%3A0xd22048cbfd39a85d!2zSXN0YW5hIMOHxLFyYcSfYW4!5e0!3m2!1sid!2sid!4v1734219649644!5m2!1sid!2sid" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
 
     <div class="form">
         <input type="text" id="name" placeholder="Masukkan Nama Anda">
@@ -202,30 +204,33 @@
         }
     }, 1000);
 
-    // Fitur Mini Map
-    function initMap() {
-        const location = { lat: 41.0369, lng: 28.9885 }; // Koordinat Istana Çırağan
-        const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 15,
-            center: location,
-        });
-        new google.maps.Marker({
-            position: location,
-            map: map,
-        });
-    }
-
     // Fitur Kirim Ucapan
     function sendWhatsApp() {
         const name = document.getElementById("name").value;
         const messages = [
-            `Selamat ${name}! Semoga bahagia selalu.`,
-            `Halo ${name}, selamat atas pernikahannya!`,
-            `Selamat ${name}! Semoga cinta kalian abadi.`,
-            `Hai ${name}, semoga hari bahagia ini menjadi awal yang indah!`
+           `Selamat Aira Dan Felix! Semoga bahagia selalu. Dari ${name}`,
+        `Halo Calon Pengantin Baru, selamat atas pernikahannya! Dari ${name}`,
+        `Selamat Ailix (Aira Felix)! Semoga cinta kalian abadi. Dari ${name}`,
+        `Hai Felix dan Aira, semoga hari bahagia ini menjadi awal yang indah! Dari ${name}`,
+        `Selamat Aira dan Felix! Semoga cinta kalian tumbuh semakin kuat. Dari ${name}`,
+        `Halo Aira dan Felix, selamat menempuh hidup baru! Semoga selalu dalam kebahagiaan. Dari ${name}`,
+        `Selamat untuk Aira dan Felix! Semoga setiap hari dipenuhi dengan cinta dan kebahagiaan. Dari ${name}`,
+        `Hai Aira dan Felix, semoga pernikahan ini membawa berkah dan kebahagiaan selamanya! Dari ${name}`,
+        `Selamat kepada pasangan yang berbahagia, Aira dan Felix! Semoga cinta kalian abadi. Dari ${name}`,
+        `Halo Aira dan Felix, selamat atas pernikahan kalian! Semoga selalu saling mendukung dan mencintai. Dari ${name}`,
+        `Selamat Aira dan Felix! Semoga perjalanan hidup kalian dipenuhi dengan cinta dan kebahagiaan. Dari ${name}`,
+        `Hai Aira dan Felix, selamat menempuh hidup baru! Semoga cinta kalian selalu bersinar. Dari ${name}`,
+        `Selamat untuk Aira dan Felix! Semoga hari ini menjadi awal dari kebahagiaan yang abadi. Dari ${name}`,
+        `Halo Aira dan Felix, semoga cinta kalian selalu diberkahi dan bahagia selamanya! Dari ${name}`,
+        `Selamat Aira dan Felix! Semoga setiap momen bersama dipenuhi dengan cinta dan tawa. Dari ${name}`,
+        `Hai Aira dan Felix, selamat atas pernikahan kalian! Semoga cinta kalian semakin kuat setiap harinya. Dari ${name}`,
+        `Selamat untuk Aira dan Felix! Semoga pernikahan ini membawa kebahagiaan yang tiada akhir. Dari ${name}`,
+        `Halo Aira dan Felix, semoga cinta kalian selalu bersemi dan bahagia selamanya! Dari ${name}`,
+        `Selamat Aira dan Felix! Semoga kalian selalu saling mencintai dan mendukung satu sama lain. Dari ${name}`
         ];
         const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-        const url = `https://wa.me/?text=${encodeURIComponent(randomMessage)}`;
+        const phoneNumber = "6287824042010"; // Nomor WhatsApp Anda dalam format internasional
+        const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(randomMessage)}`;
         window.open(url, '_blank');
     }
 
@@ -238,12 +243,8 @@
 
     // Inisialisasi peta saat halaman dimuat
     window.onload = function() {
-        initMap();
+        // Tidak ada inisialisasi peta karena kita menggunakan iframe
     };
-</script>
-
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
 </script>
 
 </body>
